@@ -1,6 +1,7 @@
 import os
 import json
 import subprocess
+from typing import Any
 import requests
 from urllib.parse import urlparse
 from datetime import datetime
@@ -199,7 +200,7 @@ def save_tweet_md(raw, out, media_root, tweet):
 # ===========================
 
 
-def parse_tweet_result(result):
+def parse_tweet_result(result: dict[str, Any]) -> dict[str, Any] | None:
     tid = result.get("rest_id")
     if not tid:
         return None
